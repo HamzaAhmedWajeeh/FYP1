@@ -1,0 +1,2 @@
+lifeline dashboard\node_modules
+lifeline_landing_page\node_modules
