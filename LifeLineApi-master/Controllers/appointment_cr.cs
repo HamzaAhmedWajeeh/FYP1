@@ -142,37 +142,5 @@ namespace LifeLineApi.Controllers
 
 
 
-        [HttpGet("pat_app")]
-        public async Task<ActionResult<IEnumerable<Appointment>>> GetPatAppointments([FromQuery] string pName)
-        {
-            try
-            {
-                // Fetch appointments associated with the identified patient
-                var appointments = await _dbContext.Appointments
-                    .Where(a => a.APatientName == pName)
-                    .Select(a => new Appointment
-                    {
-                        AId = a.AId,
-                        AHId = a.AHId,
-                        ADId = a.ADId,
-                        APatientDob = a.APatientDob,
-                        APatientName = a.APatientName,
-                        ADate = a.ADate,
-                        ATime = a.ATime,
-                        AMobile = a.AMobile,
-                        AType = a.AType,
-                        AReason = a.AReason,
-                        AD = a.AD,
-                    })
-                    .ToListAsync();
-
-                return Ok(appointments);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Internal Server Error: {ex.Message}");
-            }
-        }
-
     }
 }
