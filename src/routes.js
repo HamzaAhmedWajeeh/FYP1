@@ -6,6 +6,7 @@ import Forgot from "views/Forgot";
 import AddPatientE from "views/AddPatientE";
 import AppointmentE from "views/AppointmentE";
 import BloodE from "views/BloodE";
+import FeedbackP from "views/FeedbackP";
 import EmergencyE from "views/EmergencyE";
 import VideoE from "views/VideoE";
 import NotificationD from "views/NotificationD";
@@ -26,6 +27,7 @@ import AddBloodE from "views/AddBloodE";
 import PrescriptionHistory from "views/PrescriptionHistoryP";
 import ResetPassword from "views/resetPassword";
 import PrescriptionsD from "views/PrescriptionsD";
+import ReviewH from "views/ReviewH";
 
 var routes = [
   //Start Patient Components
@@ -34,6 +36,14 @@ var routes = [
     name: "Appointments",
     icon: "tim-icons icon-bullet-list-67",
     component: <Appointment />,
+    layout: "/patient",
+    role: "patient",
+  },
+  {
+    path: "/FeedbackP",
+    name: "Feedback",
+    icon: "tim-icons icon-chat-33",
+    component: <FeedbackP />,
     layout: "/patient",
     role: "patient",
   },
@@ -241,14 +251,14 @@ var routes = [
     layout: "/admin",
     role: "admin",
   },
-  // {
-  //   path: "/ReviewH",
-  //   name: "Review",
-  //   icon: "tim-icons icon-bulb-63",
-  //   component: <ReviewH />,
-  //   layout: "/admin",
-  //   role: "admin",
-  // },
+  {
+    path: "/ReviewH",
+    name: "Review",
+    icon: "tim-icons icon-bulb-63",
+    component: <ReviewH />,
+    layout: "/admin",
+    role: "admin",
+  },
   {
     path: "/ViewpatientH",
     name: "View Patients",
