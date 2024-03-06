@@ -237,28 +237,12 @@ namespace LifeLineApi.Controllers
 
                 if (existingPatient != null)
                 {
-                    // Update the existing patient record with new information
-                    existingPatient.PName = appointment.APatientName;
-                    existingPatient.PDId = appointment.ADId;
-                    existingPatient.PDob = appointment.APatientDob;
-                    existingPatient.PMobile = appointment.AMobile;
-                    existingPatient.PDate = appointment.ADate;
-                    existingPatient.PTime = appointment.ATime;
-                    existingPatient.PAStatus = "Accepted";
-                    existingPatient.PReason = "Appointment Accepted";
+                   
 
-                    // Save changes to the existing patient record
-                    _dbContext.Patients.Update(existingPatient);
-
-                    // Remove the appointment from the database
-                    _dbContext.Appointments.Remove(appointment);
-
-                    // Save changes to the database
-                    _dbContext.SaveChanges();
-
-                    return Ok("Appointment accepted successfully");
+                    // Patient with the same email exists in the same hospital
+                    // Return the existing patient's data with a message
+                    return StatusCode(403, new { Message = "Patient with this Email already exists in the same hospital.", ExistingPatient = existingPatient });
                 }
-
 
 
 
